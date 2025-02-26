@@ -33,9 +33,8 @@ const InventoryGrid: React.FC<{ inventory: Inventory; side: 'left' | 'right' }> 
     <>
       <div className={`inventory-grid-wrapper ${side}-inventory`} style={{ pointerEvents: isBusy ? 'none' : 'auto' }}>
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-        
           <div className="inventory-grid-header-wrapper">
-            <div className='inventory-grid-title'>
+            <div className="inventory-grid-title">
               <h1>Inventory</h1>
               <p>{inventory.label}</p>
             </div>
@@ -49,13 +48,10 @@ const InventoryGrid: React.FC<{ inventory: Inventory; side: 'left' | 'right' }> 
         </div>
 
         {/* Hotbar Section - Only for player inventories */}
-        {isPlayerInventory && (
-          <div className="section-label">Hotbar</div>
-        )}
-        
+        {isPlayerInventory && <div className="section-label">Hotbar</div>}
+
         {isPlayerInventory && (
           <div className="hotbar-section">
-            
             <div className="hotbar-slots">
               {hotbarItems.map((item) => (
                 <InventorySlot
@@ -71,10 +67,8 @@ const InventoryGrid: React.FC<{ inventory: Inventory; side: 'left' | 'right' }> 
         )}
 
         {/* Main Inventory */}
-        {isPlayerInventory && (
-          <div className="section-label">Pockets</div>
-        )}
-        
+        {isPlayerInventory && <div className="section-label">Pockets</div>}
+
         <div className="inventory-grid-container" ref={containerRef}>
           <>
             {mainInventoryItems.slice(0, (page + 1) * PAGE_SIZE).map((item, index) => (
@@ -89,7 +83,6 @@ const InventoryGrid: React.FC<{ inventory: Inventory; side: 'left' | 'right' }> 
             ))}
           </>
         </div>
-        
       </div>
     </>
   );

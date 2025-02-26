@@ -5,21 +5,13 @@ const darkenColorManually = (rgb: number[], factor: number) => {
   return rgb.map((value) => Math.max(value - factor, 0)); // Ensure value doesn't go below 0
 };
 
-const colorChannelMixer = (
-  colorChannelA: number,
-  colorChannelB: number,
-  amountToMix: number
-) => {
+const colorChannelMixer = (colorChannelA: number, colorChannelB: number, amountToMix: number) => {
   let channelA = colorChannelA * amountToMix;
   let channelB = colorChannelB * (1 - amountToMix);
   return channelA + channelB;
 };
 
-const colorMixer = (
-  rgbA: number[],
-  rgbB: number[],
-  amountToMix: number
-) => {
+const colorMixer = (rgbA: number[], rgbB: number[], amountToMix: number) => {
   let r = colorChannelMixer(rgbA[0], rgbB[0], amountToMix);
   let g = colorChannelMixer(rgbA[1], rgbB[1], amountToMix);
   let b = colorChannelMixer(rgbA[2], rgbB[2], amountToMix);
@@ -27,16 +19,16 @@ const colorMixer = (
 };
 
 const COLORS = {
-  primaryColor: [128, 0, 128],  // Purple
-  secondColor: [148, 0, 211],   // Dark Violet
-  accentColor: [186, 85, 211],  // Medium Orchid (Light Purple)
+  primaryColor: [128, 0, 128], // Purple
+  secondColor: [148, 0, 211], // Dark Violet
+  accentColor: [186, 85, 211], // Medium Orchid (Light Purple)
 };
 
 // Manually darkened colors for borders (shades of purple)
 const DARKENED_COLORS = {
-  primaryColorBorder: darkenColorManually([128, 0, 128], 50),  // Darker purple
-  secondColorBorder: darkenColorManually([148, 0, 211], 50),   // Darker dark violet
-  accentColorBorder: darkenColorManually([186, 85, 211], 50),  // Darker medium orchid
+  primaryColorBorder: darkenColorManually([128, 0, 128], 50), // Darker purple
+  secondColorBorder: darkenColorManually([148, 0, 211], 50), // Darker dark violet
+  accentColorBorder: darkenColorManually([186, 85, 211], 50), // Darker medium orchid
 };
 
 const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percent, durability }) => {
