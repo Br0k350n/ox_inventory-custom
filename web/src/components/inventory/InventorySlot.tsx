@@ -128,10 +128,10 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
       style={{
         filter:
           !canPurchaseItem(item, { type: inventoryType, groups: inventoryGroups }) || !canCraftItem(item, inventoryType)
-            ? 'brightness(80%) grayscale(100%)'
+            ? 'brightness(80%) grayscale(80%)'
             : undefined,
-        opacity: isDragging ? 0.4 : 1.0,
-        backgroundImage: `url(${item?.name ? getItemUrl(item as SlotWithItem) : 'none'}`,
+        opacity: isDragging ? 0.4 : 0.8,
+        background: `url(${item?.name ? getItemUrl(item as SlotWithItem) : 'none'}) center / 80% no-repeat, radial-gradient(circle at center, RGBA(116, 1, 89, 0.7), RGBA(55, 0, 56, 0.7)) center / cover no-repeat`,
         border: isOver ? '1px dashed rgba(255,255,255,0.4)' : '',
       }}
     >
@@ -157,20 +157,7 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
             }
           >
             {inventoryType === 'player' && item.slot <= 5 && <div className="inventory-slot-number">{item.slot}</div>}
-            <div className="item-slot-info-wrapper">
-              <p>
-                {item.weight > 0
-                  ? item.weight >= 1000
-                    ? `${(item.weight / 1000).toLocaleString('en-us', {
-                        minimumFractionDigits: 2,
-                      })}kg `
-                    : `${item.weight.toLocaleString('en-us', {
-                        minimumFractionDigits: 0,
-                      })}g `
-                  : ''}
-              </p>
-              <p>{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
-            </div>
+            <p className='itemCount-p'>{item.count ? item.count.toLocaleString('en-us') + `x` : ''}</p>
           </div>
           <div>
             {inventoryType !== 'shop' && item?.durability !== undefined && (
@@ -211,9 +198,23 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
               </>
             )}
             <div className="inventory-slot-label-box">
+            <div className="item-slot-info-wrapper">
+                <p>
+                  {item.weight > 0
+                    ? item.weight >= 1000
+                      ? `${(item.weight / 1000).toLocaleString('en-us', {
+                          minimumFractionDigits: 2,
+                        })}kg `
+                      : `${item.weight.toLocaleString('en-us', {
+                          minimumFractionDigits: 0,
+                        })}g `
+                    : ''}
+                </p>
+              </div>
               <div className="inventory-slot-label-text">
                 {item.metadata?.label ? item.metadata.label : Items[item.name]?.label || item.name}
               </div>
+              
             </div>
           </div>
         </div>
