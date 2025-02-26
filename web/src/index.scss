@@ -9,7 +9,7 @@ $secondaryColorDark: rgba(12, 12, 12, 0.8);
 
 $gridCols: 5;
 $gridRows: 5;
-$gridSize: 12.2vh;
+$gridSize: 10.2vh;
 $gridGap: 10px;
 $containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
 
@@ -153,9 +153,9 @@ button:active {
   align-items: center;
   height: 100%;
   perspective: 1000px;
-  gap: 20px;
+  gap: 150px;
   // background: radial-gradient(circle at center, RGBA(116, 1, 89, 0.7), RGBA(55, 0, 56, 0.7));
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 
@@ -305,7 +305,7 @@ button:active {
 .inventory-grid-wrapper {
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 0.2);   /*var(--background-color) */
+  background: rgba(0, 0, 0, 0.4);   /*var(--background-color) */
   border: 2px solid var(--border-color);
   border-radius: 12px;
   padding: var(--container-padding);
@@ -313,7 +313,7 @@ button:active {
   gap: 10px;
   position: relative;
   transition: transform 0.3s ease-in-out;
-  transform-style: preserve-3d; /* Ensure child elements get the perspective effect */
+  // transform-style: preserve-3d; /* Ensure child elements get the perspective effect */
   overflow: visible;
 }
 
@@ -327,7 +327,7 @@ button:active {
 }
 
 .inventory-grid-wrapper.left-inventory  .inventory-grid-container {
-  height: calc((5 * 12.42vh + 5 * 10px) - (137.266px));
+  height: calc((5 * 12.42vh + 5 * 10px) - (207.266px));
 }
 
 /* Right-side inventory (Storage / Ground) */
