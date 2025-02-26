@@ -21,10 +21,12 @@ interface SlotProps {
   inventoryType: Inventory['type'];
   inventoryGroups: Inventory['groups'];
   item: Slot;
+  className?: string; // Add className as a prop
+  style?: React.CSSProperties; // Add style as a prop
 }
 
 const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> = (
-  { item, inventoryId, inventoryType, inventoryGroups },
+  { item, inventoryId, inventoryType, inventoryGroups, className, style },
   ref
 ) => {
   const manager = useDragDropManager();
@@ -35,7 +37,7 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
     return canPurchaseItem(item, { type: inventoryType, groups: inventoryGroups }) && canCraftItem(item, inventoryType);
   }, [item, inventoryType, inventoryGroups]);
 
-  const [{ isDragging }, drag] = useDrag<DragSource, void, { isDragging: boolean }>(
+  const [{ isDragging }, drag] = useDrag<DragSource, void, { isDragging: boolean }>( 
     () => ({
       type: 'SLOT',
       collect: (monitor) => ({
@@ -119,12 +121,15 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
 
   const refs = useMergeRefs([connectRef, ref]);
 
+  // Check if the slot is the "Secret Pocket"
+  const isSecretPocket = className === 'last-inventory-slot';
+
   return (
     <div
       ref={refs}
       onContextMenu={handleContext}
       onClick={handleClick}
-      className="inventory-slot"
+      className={`inventory-slot ${className || ''}`} // Add className dynamically
       style={{
         filter:
           !canPurchaseItem(item, { type: inventoryType, groups: inventoryGroups }) || !canCraftItem(item, inventoryType)
@@ -133,10 +138,12 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
         opacity: isDragging ? 0.4 : 0.8,
         background: `url(${
           item?.name ? getItemUrl(item as SlotWithItem) : 'none'
-        }) center / 80% no-repeat, radial-gradient(circle at center, RGBA(116, 1, 89, 0.7), RGBA(55, 0, 56, 0.7)) center / cover no-repeat`,
+        }) center / 80% no-repeat, radial-gradient(circle at center, RGBA(112, 0, 169, 0.7), RGBA(61, 0, 93, 0.7)) center / cover no-repeat`,
         border: isOver ? '1px dashed rgba(255,255,255,0.4)' : '',
+        ...style, // Merge custom styles
       }}
     >
+
       {isSlotWithItem(item) && (
         <div
           className="item-slot-wrapper"
@@ -223,5 +230,6 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
     </div>
   );
 };
+
 
 export default React.memo(React.forwardRef(InventorySlot));
