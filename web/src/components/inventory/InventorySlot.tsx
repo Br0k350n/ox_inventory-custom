@@ -137,8 +137,8 @@ const InventorySlot: React.ForwardRefRenderFunction<HTMLDivElement, SlotProps> =
             : undefined,
         opacity: isDragging ? 0.4 : 0.8,
         background: `url(${
-          item?.name ? getItemUrl(item as SlotWithItem) : 'none'
-        }) center / 80% no-repeat, radial-gradient(circle at center, RGBA(112, 0, 169, 0.7), RGBA(61, 0, 93, 0.7)) center / cover no-repeat`,
+          item?.name ? getItemUrl(item as SlotWithItem) : 'none' 
+        }) center / 80% no-repeat, radial-gradient(circle at center, RGBA(140,71,169, 0.7), RGBA(61, 0, 93, 0.7)) center / cover no-repeat`,
         border: isOver ? '1px dashed rgba(255,255,255,0.4)' : '',
         ...style, // Merge custom styles
       }}

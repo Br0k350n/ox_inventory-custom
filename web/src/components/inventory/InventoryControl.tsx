@@ -39,6 +39,7 @@ const InventoryControl: React.FC = () => {
     <>
       <UsefulControls infoVisible={infoVisible} setInfoVisible={setInfoVisible} />
       <div className="inventory-control">
+        <img src="./images/logo.png" alt="" className='inv-logo' />
         <div className="inventory-control-wrapper">
           <input
             className="inventory-control-input"

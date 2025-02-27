@@ -55,6 +55,7 @@ const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percen
       style={{
         display: 'flex',
         width: durability ? '100%' : '25%',
+        height: durability ? 'auto' : '1vh',
         borderRadius: '5px',
         padding: durability ? '0' : '2px',
       }}
@@ -82,7 +83,7 @@ const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percen
                 backgroundColor: color, // Fully filled boxes
                 marginRight: '2%',
                 width: '8%',
-                height: '75%',
+                height: '100%',
                 borderRadius: '2px',
                 border: `1px solid rgb(${DARKENED_COLORS.primaryColorBorder.join(', ')})`, // Manually set darker border color for filled boxes
                 opacity: 1, // Fully opaque for filled boxes
@@ -99,7 +100,7 @@ const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percen
                 background: `linear-gradient(to right, ${color} ${remainingPercent * 100}%, rgba(0, 0, 0, 0) 0%)`,
                 marginRight: '2%',
                 width: '8%',
-                height: '75%',
+                height: '100%',
                 borderRadius: '2px',
                 border: `1px solid rgb(${DARKENED_COLORS.primaryColorBorder.join(', ')})`, // Manually set darker border color for partial box
                 opacity: 0.5, // Partially opaque for the partial box
@@ -116,7 +117,7 @@ const WeightBar: React.FC<{ percent: number; durability?: boolean }> = ({ percen
                 backgroundColor: 'transparent',
                 marginRight: '2%',
                 width: '8%',
-                height: '75%',
+                height: '100%',
                 borderRadius: '2px',
                 border: `1px solid rgba(0, 0, 0, 0.3)`, // Manually set darker border for empty boxes
                 opacity: 1 - Math.pow(index / numBoxes, 2), // Faster fading effect for empty boxes

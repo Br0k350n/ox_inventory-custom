@@ -70,7 +70,7 @@ const InventoryGrid: React.FC<{ inventory: Inventory; side: 'left' | 'right' }> 
   {mainInventoryItems.map((item, index) => (
     <React.Fragment key={`${inventory.type}-${inventory.id}-${item.slot}`}>
       {/* Secret Pocket Label for the Last Inventory Slot */}
-      {index === mainInventoryItems.length - 1 && (
+      {index === mainInventoryItems.length - 1 && isPlayerInventory && (
         <div className="secret-pocket-label">Secret Pocket</div>
       )}
       <InventorySlot
@@ -79,8 +79,8 @@ const InventoryGrid: React.FC<{ inventory: Inventory; side: 'left' | 'right' }> 
         inventoryGroups={inventory.groups}
         inventoryId={inventory.id}
         style={
-          index === mainInventoryItems.length - 1
-            ? { gridRowStart: 'span 1', gridColumnStart: '1' }
+          isPlayerInventory && index === mainInventoryItems.length - 1
+            ?  { gridRowStart: 'span 1', gridColumnStart: '1' }
             : {}
         }
         className={index === mainInventoryItems.length - 1 ? 'last-inventory-slot' : ''}

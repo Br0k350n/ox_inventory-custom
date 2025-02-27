@@ -9,7 +9,7 @@ $secondaryColorDark: rgba(12, 12, 12, 0.8);
 
 $gridCols: 5;
 $gridRows: 5;
-$gridSize: 10.2vh;
+$gridSize: 10.19vh;
 $gridGap: 10px;
 $containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gridGap});
 
@@ -19,7 +19,7 @@ $containerSize: calc(#{$gridRows} * #{$gridSize + 0.22vh} + #{$gridRows} * #{$gr
   --secondary-color: #bb86fc;
   --highlight-color: #a020f0;
   --background-color: rgba(25, 0, 45, 0.9);
-  --border-color: rgba(230, 80, 200, 1);
+  --border-color: rgba(79, 0, 120, 1);
 
   --quick-slot-bg: rgba(170, 85, 255, 0.3);
   --slot-border: repeating-linear-gradient(
@@ -154,14 +154,20 @@ button:active {
   align-items: center;
   height: 100%;
   perspective: 1000px;
-  gap: 150px;
-  background: radial-gradient(circle at center, RGBA(116, 1, 89, 0.6), RGBA(55, 0, 56, 0.6));
-  backdrop-filter: blur(5px); 
+  gap: 125px; 
+  background: radial-gradient(circle at center, RGBA(105,6,116, 0.2), RGBA(38,0,38, 0.4)) !important;
+  // backdrop-filter: blur(5px); 
+}
+
+.inv-logo {
+  height: 28vh;
+  opacity: 0.5;
 }
 
 .inventory-control {
   display: flex;
-
+  flex-direction: column;
+  gap: 85px;
   .inventory-control-wrapper {
     display: flex;
     flex-direction: column;
@@ -179,6 +185,7 @@ button:active {
     text-align: center;
     outline: none;
     border: none;
+    width: calc(100% - 16px);
     color: #fff;
     background-color: $secondaryColor;
     &:focus-within {
@@ -305,16 +312,17 @@ button:active {
 .inventory-grid-wrapper {
   display: flex;
   flex-direction: column;
-  background: rgba(65, 13, 71, 0);   /*var(--background-color) */
+  background: rgba(55, 13, 71, 0.3); 
   border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: var(--container-padding);
-  box-shadow: 0 0 15px rgba(198, 7, 172, 0.7);
-  gap: 10px;
+  box-shadow: 0 0 15px rgba(147, 7, 198, 0.7);
+  gap: 8px;
   position: relative;
   transition: transform 0.3s ease-in-out;
   // transform-style: preserve-3d; /* Ensure child elements get the perspective effect */
   overflow: visible;
+  height: 70vh;
 }
 
 .inventory-grid-title h1 {
@@ -327,7 +335,7 @@ button:active {
 }
 
 .inventory-grid-wrapper.left-inventory  .inventory-grid-container {
-  height: calc((5 * 12.42vh + 5 * 10px) - (207.266px));
+  height: calc((5 * 12.42vh + 5 * 10px) - (240.266px));
 }
 
 /* Right-side inventory (Storage / Ground) */
